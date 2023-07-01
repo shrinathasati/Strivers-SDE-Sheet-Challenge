@@ -1,0 +1,31 @@
+#include <bits/stdc++.h> 
+bool isPalindrome(string s, int i, int j){
+    while(i<j){
+        if(s[i]!=s[j])return false;
+        i++;j--;
+    }
+    return true;
+}
+void solve(int i, string s, vector<string>&v, vector<vector<string>>&ans){
+    int n = s.length();
+    if(i==n){
+        ans.push_back(v);
+        return;
+    }
+    for(int j=i;j<n;j++){
+        if(isPalindrome(s,i,j)==true){
+            string k = s.substr(i,j-i+1);
+            v.push_back(k);
+            solve(j+1,s,v,ans);
+            v.pop_back();
+        }
+    }
+}
+vector<vector<string>> partition(string &s) 
+{
+    int n = s.length();
+    vector<vector<string>>ans;
+    vector<string>v;
+    solve(0,s,v,ans);
+    return ans;
+}
