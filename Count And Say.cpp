@@ -14,7 +14,7 @@ string writeAsYouSpeak(int n)
 
         string a;
 
-        for(int j=0;j<s.length();j++)
+        for(int j=0;j<s.length();)
 
         {
 
